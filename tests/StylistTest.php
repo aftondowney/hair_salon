@@ -56,21 +56,35 @@
 
           function test_deleteAll()
           {
-            //Arrange
-            $name = "Sue";
-            $new_stylist = new Stylist($name);
-            $new_stylist->save();
+              //Arrange
+              $name = "Sue";
+              $new_stylist = new Stylist($name);
+              $new_stylist->save();
 
-            $name2 = "Lisa";
-            $new_stylist2 = new Stylist($name2);
-            $new_stylist2->save();
+              $name2 = "Lisa";
+              $new_stylist2 = new Stylist($name2);
+              $new_stylist2->save();
 
-            //Act
-            Stylist::deleteAll();
-            $result = Stylist::getAll();
+              //Act
+              Stylist::deleteAll();
+              $result = Stylist::getAll();
 
-            //Assert
-            $this->assertEquals([], $result);
+              //Assert
+              $this->assertEquals([], $result);
+          }
+
+          function test_find()
+          {
+              //Arrange
+              $name = "Sue";
+              $new_stylist = new Stylist($name);
+              $new_stylist->save();
+
+              //Act
+              $result = Stylist::find($new_stylist->getId());
+
+              //Assert
+              $this->assertEquals($new_stylist, $result);
           }
     }
 
