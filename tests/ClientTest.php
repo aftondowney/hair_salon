@@ -52,7 +52,7 @@
 
               $name = "Anne";
               $phone_number = "(555)555-5555";
-              $id = null;
+              $id = 1;
               $stylist_id = $new_stylist->getId();
               $new_client = new Client($name, $phone_number, $id, $stylist_id);
 

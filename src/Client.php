@@ -7,7 +7,7 @@
         private $id;
         private $stylist_id;
 
-        function __construct($name, $phone_number, $id, $stylist_id)
+        function __construct($name, $phone_number, $id = null, $stylist_id)
         {
             $this->name = $name;
             $this->phone_number = $phone_number;
@@ -24,6 +24,18 @@
         {
             return $this->name;
         }
+
+        function getId()
+        {
+            return $this->id;
+        }
+
+        function getStylist_Id()
+        {
+            return $this->stylist_id;
+        }
+
+
     }
 
 
