@@ -111,16 +111,17 @@
           {
               //Arrange
               $name = "Sue";
-              $new_stylist = new Stylist($name);
-              $new_stylist->save();
-              $new_name = "Susan"
+              $id = null;
+              $test_stylist = new Stylist($name, $id);
+              $test_stylist->save();
+
+              $new_name = "Susan";
 
               //Act
-              $new_stylist->update($new_name);
-              $result = Stylist::getAll();
+              $test_stylist->update($new_name);
 
               //Assert
-              $this->assertEquals($new_stylist, $result);
+              $this->assertEquals("Susan", $test_stylist->getName());
           }
     }
 
