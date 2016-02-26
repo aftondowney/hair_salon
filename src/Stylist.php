@@ -28,7 +28,7 @@
 
       function save()
       {
-          $GLOBALS['DB']->query("INSERT INTO stylists (name) VALUES ('{$this->name}')");
+          $GLOBALS['DB']->query("INSERT INTO stylists (name) VALUES ('{$this->name}');");
           $this->id = $GLOBALS['DB']->lastInsertId();
       }
 
