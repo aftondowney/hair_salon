@@ -1,0 +1,59 @@
+<html>
+<head>
+    {% include '/includes/head.html.twig' %}
+</head>
+<body>
+  <div class="jumbotron">
+    <h1>Best Clients in Town!</h1>
+  </div>
+  <div class="container">
+    <h1>{{ stylist.getName }}</h1>
+
+    {% if clients is not empty %}
+        <p>Here are all your clients:</p>
+        <ul>
+            {% for client in clients %}
+                <li><a href="/client/{{ client.getId }}">{{ client.getName }}</a>
+                  <ul>
+                    <li class="output-detail">{{ client.getPhone_number }}</li>
+                  </ul>
+
+                    <button><a href="/client/{{ stylist.getId }}/{{ client.getId }}/edit_form">Edit</a></button>
+                    <form action="/clients/{{ stylist.getId }}/{{ client.getId }}/delete" method="post">
+                        <input name="_method" type="hidden" value="delete">
+                        <button type="submit">Delete </button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+      <p>There are no clients yet, add some!</p>
+    {% endif %}
+
+    <h4>Add a client</h4>
+
+    <form action='/clients' method='post'>
+        <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+        <label for='name'>Name</label>
+        <input id='name' name='name' type='text' required>
+
+        <label for="phone_number">Phone Number</label>
+        <input type="text" name="phone_number" required>
+
+        <button type='submit'>Add</button>
+    </form>
+
+    {% if form %}
+        <form action="/clients/updated" method="post">
+            <input name="_method" type="hidden" value="patch">
+            <input name="current_clientId" type="hidden" value="{{ current_client.getId() }}">
+            <input name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+            <input type="text" name="name">
+            <button type="submit" name="button">Edit</button>
+        </form>
+    {% endif %}
+
+    <p><a href='/'>Home</a></p>
+  </div>
+</body>
+</html>
