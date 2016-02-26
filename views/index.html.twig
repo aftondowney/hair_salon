@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include '/includes/head.html.twig' %}
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hair Today, Gone Tomorrow!</h1>
+      <p><em>You better do it otherwise your future-self will be pissed!</em></p>
+
+      <form action="/stylists" method="post">
+          <label for="name">Stylist:</label>
+          <input id="name" name="name" type="text">
+
+          <button class= "btn btn-success" type="submit">Add</button>
+      </form>
+
+      <form action="/delete_stylists" method="post">
+          <button class= "btn btn-danger"type="submit">Delete All</button>
+      </form>
+
+      {% if stylists is not empty %}
+          <p>Here are all your stylists:</p>
+          <ul>
+              {% for stylist in stylists %}
+                  <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+              {% endfor %}
+          </ul>
+      {% else %}
+        <p>There are no stylists yet!</p>
+      {% endif %}
+
+    </div>
+  </body>
+</html>
