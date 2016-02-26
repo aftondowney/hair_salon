@@ -25,6 +25,16 @@
             return $this->name;
         }
 
+        function setPhone_number($phone_number)
+        {
+            $this->phone_number = $phone_number;
+        }
+
+        function getPhone_number()
+        {
+            return $this->phone_number;
+        }
+
         function getId()
         {
             return $this->id;
