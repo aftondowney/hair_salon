@@ -34,6 +34,19 @@
               //Assert
               $this->assertEquals($name, $result);
           }
+          function test_getId()
+          {
+              //Arrange
+              $name = "Sue";
+              $id = 1;
+              $new_stylist = new Stylist($name, $id);
+
+              //Act
+              $result = $new_stylist->getId();
+
+              //Assert
+              $this->assertEquals(true, is_numeric($result));
+          }
 
           function test_save()
           //this test seems to fail the first time I run it and then passes when I run it again. Something with the id is not right.
