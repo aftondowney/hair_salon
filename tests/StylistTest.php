@@ -22,6 +22,19 @@
             // Client::deleteAll();
           }
 
+          function test_getName()
+          {
+              //Arrange
+              $name = "Sue";
+              $new_stylist = new Stylist($name);
+
+              //Act
+              $result = $new_stylist->getName();
+
+              //Assert
+              $this->assertEquals($name, $result);
+          }
+
           function test_save()
           //this test seems to fail the first time I run it and then passes when I run it again. Something with the id is not right.
           {
