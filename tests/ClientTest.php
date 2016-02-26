@@ -42,6 +42,28 @@
               //Assert
               $this->assertEquals("Anne", $result);
           }
+
+          function test_getPhone_number()
+          {
+              //Arrange
+              $stylist_name = "Sue";
+              $id = null;
+              $new_stylist = new Stylist($stylist_name, $id);
+              $new_stylist->save();
+
+              $name = "Anne";
+              $phone_number = "(555)555-5555";
+              $id = null;
+              $stylist_id = $new_stylist->getId();
+              $new_client = new Client($name, $phone_number, $id, $stylist_id);
+
+              //Act
+              $result = $new_client->getPhone_number();
+
+              //Assert
+              $this->assertEquals("(555)555-5555", $result);
+          }
+
           function test_getId()
           {
               //Arrange
