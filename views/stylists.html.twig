@@ -1,0 +1,32 @@
+<html>
+  <head>
+      {% include '/includes/head.html.twig' %}
+  </head>
+  <body>
+    <div class="container">
+      <h1>{{ stylist.getName }}</h1>
+      {% if clients is not empty %}
+          <p>Here are the clients:</p>
+          <ul>
+              {% for client in clients %}
+                  <li>{{ client.getName }}</li>
+              {% endfor %}
+          </ul>
+      {% endif %}
+
+      <form action='/clients' method='post'>
+          <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+          <label for='name'>Client Name</label>
+          <input id='name' name='name' type='text'>
+          <br>
+          <label for='phone_number'>Phone Number</label>
+          <input id='phone_number' name='phone_number' type='text'>
+          <br>
+          <br>
+          <button class= 'btn btn-primary' type='submit'>Add client</button>
+      </form>
+
+      <p><a href='/'>Home</a></p>
+    </div>
+  </body>
+</html>

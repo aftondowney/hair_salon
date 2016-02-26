@@ -1,35 +1,45 @@
-<!DOCTYPE html>
 <html>
   <head>
-    {% include '/includes/head.html.twig' %}
+      {% include '/includes/head.html.twig' %}
   </head>
   <body>
     <div class="container">
-      <h1>Hair Today, Gone Tomorrow!</h1>
-      <p><em>You better do it otherwise your future-self will be pissed!</em></p>
+      <h1>Hair today, gone tomorrow.</h1>
+
+      <p>Add a new stylist:</p>
 
       <form action="/stylists" method="post">
-          <label for="name">Stylist:</label>
-          <input id="name" name="name" type="text">
+          <label for="name">Stylist: </label>
+          <input id="name" name="name" type="text" required>
 
-          <button class= "btn btn-success" type="submit">Add</button>
-      </form>
-
-      <form action="/delete_stylists" method="post">
-          <button class= "btn btn-danger"type="submit">Delete All</button>
+          <button type="submit">Add Stylist</button>
       </form>
 
       {% if stylists is not empty %}
           <p>Here are all your stylists:</p>
           <ul>
               {% for stylist in stylists %}
-                  <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+                  <li>
+                  <a href="/stylist/{{ stylist.getId }}">{{ stylist.getType }}</a><a href='/stylists/{{ stylist.getId }}/edit_form'>edit</a>
+                  <form action="/stylists/{{ stylist.getId }}/delete" method="post">
+                  <input name="_method" type="hidden" value="delete">
+                  <button type="submit">Delete this stylist</button>
+                  </form>
+                  </li>
               {% endfor %}
           </ul>
-      {% else %}
-        <p>There are no stylists yet!</p>
+              {% else %}
+              <p>There are no stylists yet, add some!</p>
       {% endif %}
 
+      {% if form %}
+          <form action="/stylists/updated" method="post">
+          <input name="_method" type="hidden" value="patch">
+          <input name="current_stylistId" type="hidden" value="{{ current_stylist.getId() }}">
+          <input type="text" name="name">
+          <button type="submit" name="button">Edit Name</button>
+          </form>
+      {% endif %}
     </div>
   </body>
 </html>

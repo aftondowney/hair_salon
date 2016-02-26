@@ -1,0 +1,52 @@
+li {
+  font-size: 25px;
+  color: #1f323c;
+}
+
+.jumbotron {
+  text-align: center;
+  font-weight: bold;
+  background-color: #a55502;
+  color: #f8f8f8;
+}
+
+body {
+  background-color: #89a6aa;
+  color: #1f323c;
+  font-family:'Laila', serif;
+  font-size: 15px;
+}
+
+
+button {
+  background-color: #c0884d;
+  font-size:13px;
+  margin-bottom: 4px;
+}
+
+input {
+  background-color: #f8f8f8;
+}
+
+label {
+  font-size: 21px;
+  margin-left: 4px;
+  margin-right: 10px:
+}
+
+a {
+  color: #1f323c;
+}
+
+.output-detail {
+  font-size: 18px;
+}
+
+.review_titles {
+  color: #a55502;
+  font-weight: bolder;
+}
+
+.output-title{
+  font-size: 20px;
+}
