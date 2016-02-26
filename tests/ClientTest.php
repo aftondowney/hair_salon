@@ -84,6 +84,27 @@
               //Assert
               $this->assertEquals(true, is_numeric($result));
           }
+
+          function test_getStylist_id()
+          {
+              //Arrange
+              $stylist_name = "Sue";
+              $id = null;
+              $new_stylist = new Stylist($stylist_name, $id);
+              $new_stylist->save();
+
+              $name = "Anne";
+              $phone_number = "(555)555-5555";
+              $id = 1;
+              $stylist_id = $new_stylist->getId();
+              $new_client = new Client($name, $phone_number, $id, $stylist_id);
+
+              //Act
+              $result = $new_client->getStylist_Id();
+
+              //Assert
+              $this->assertEquals(true, is_numeric($result));
+          }
     }
 
 
