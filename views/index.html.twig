@@ -20,7 +20,8 @@
           <ul>
               {% for stylist in stylists %}
                   <li>
-                  <a href="/stylist/{{ stylist.getId }}">{{ stylist.getName }}</a><br><button><a href='/stylists/{{ stylist.getId }}/edit_form'>edit</a></button>
+                  <a class="name" href="/stylist/{{ stylist.getId }}">{{ stylist.getName }}</a><br>
+                  <button><a href='/stylists/{{ stylist.getId }}/edit_form'>edit</a></button>
                   <form action="/stylists/{{ stylist.getId }}/delete" method="post">
                   <input name="_method" type="hidden" value="delete">
                   <button type="submit">Delete this stylist</button>

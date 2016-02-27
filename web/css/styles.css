@@ -1,5 +1,4 @@
 li {
-  font-size: 25px;
   color: #556273;
 }
 
@@ -18,9 +17,12 @@ body {
 }
 
 p {
-  font-size: 20px;
+  font-size: 25px;
 }
 
+span {
+  font-size: 20px;
+}
 
 button {
   background-color: #b7cbc2;
@@ -42,7 +44,11 @@ a {
   color: #556273;
 }
 
-.output-detail {
+.name {
+  font-size: 25px;
+}
+
+/*.output-detail {
   font-size: 18px;
 }
 
@@ -53,4 +59,4 @@ a {
 
 .output-title{
   font-size: 20px;
-}
+}*/

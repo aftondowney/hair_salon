@@ -29,7 +29,7 @@
 		{
 				$stylist = new Stylist ($_POST['name']);
 				$stylist->save();
-				return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+				return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll(), 'form' => false));
 		});
 
 		$app->get("/stylists/{id}/edit_form", function($id) use ($app)

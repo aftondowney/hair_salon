@@ -10,16 +10,13 @@
         <p>Here are all your clients:</p>
         <ul>
             {% for client in clients %}
-                <li><a href="/client/{{ client.getId }}">{{ client.getName }}</a>
-                  <ul>
-                    <li class="output-detail">{{ client.getPhone_number }}</li>
-                  </ul>
-
-                    <button><a href="/client/{{ stylist.getId }}/{{ client.getId }}/edit_form">Edit</a></button>
-                    <form action="/clients/{{ stylist.getId }}/{{ client.getId }}/delete" method="post">
-                        <input name="_method" type="hidden" value="delete">
-                        <button type="submit">Delete </button>
-                    </form>
+                <li>
+                  <p>{{ client.getName }}<span> phone: </span>{{ client.getPhone_number }}</p><br>
+                  <button><a href="/client/{{ stylist.getId }}/{{ client.getId }}/edit_form">Edit</a></button>
+                  <form action="/clients/{{ stylist.getId }}/{{ client.getId }}/delete" method="post">
+                      <input name="_method" type="hidden" value="delete">
+                      <button type="submit">Delete </button>
+                  </form>
                 </li>
             {% endfor %}
         </ul>
