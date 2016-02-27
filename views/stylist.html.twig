@@ -3,9 +3,6 @@
     {% include '/includes/head.html.twig' %}
 </head>
 <body>
-  <div class="jumbotron">
-    <h1>Best Clients in Town!</h1>
-  </div>
   <div class="container">
     <h1>{{ stylist.getName }}</h1>
 
@@ -29,8 +26,6 @@
     {% else %}
       <p>There are no clients yet, add some!</p>
     {% endif %}
-
-    <h4>Add a client</h4>
 
     <form action='/clients' method='post'>
         <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">

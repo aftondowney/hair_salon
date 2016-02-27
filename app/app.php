@@ -12,7 +12,7 @@
 		$DB = new PDO($server, $username, $password);
 
 		$app = new Silex\Application();
-		// $app['debug'] = true;
+		$app['debug'] = true;
 
 		$app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
@@ -62,10 +62,10 @@
 
 		$app->post("/clients", function() use ($app)
 		{
-				$client = new Client($_POST['name'], $_POST['phone_number'], $_POST['stylist_id']);
+				$client = new Client($_POST['name'], $_POST['phone_number'], $id = null, $_POST['stylist_id']);
 				$client->save();
 				$stylist = Stylist::find($_POST['stylist_id']);
-				return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
+				return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients(), 'form' => false));
 		});
 
 		$app->get("/client/{cid}/{rid}/edit_form", function($cid, $rid) use ($app)
@@ -80,7 +80,7 @@
 				$client_to_edit = Client::find($_POST['current_clientId']);
 				$client_to_edit->update($_POST['name']);
 				$stylist = Stylist::find($_POST['stylist_id']);
-				return $app['twig']->render('stylist.html.twig', array('clients' => $stylist->getClients(), 'stylist' => $stylist));
+				return $app['twig']->render('stylist.html.twig', array('clients' => $stylist->getClients(), 'stylist' => $stylist, 'form' => false));
 		});
 
 		$app->delete("/clients/{stylist_id}/{client_id}/delete", function($stylist_id, $client_id) use ($app)
@@ -88,7 +88,7 @@
 				$client = Client::find($client_id);
 				$client->delete();
 				$stylist = Stylist::find($stylist_id);
-				return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
+				return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients(), 'form' => false));
 		});
 
 		return $app;
